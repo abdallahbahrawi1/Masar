@@ -1,0 +1,1 @@
+export { default } from "file:///C:/Users/abodc/OneDrive/Desktop/masar/Masar/Frontend/node_modules/@nuxt/vite-builder/dist/runtime/client.manifest.mjs"
