@@ -9,8 +9,8 @@
 </script>
 
 <style>
-body{
-    overflow: hidden;
+body {
+  overflow-x: hidden;
 }
 
 .login-view {
