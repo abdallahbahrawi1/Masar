@@ -98,7 +98,7 @@ db.users.belongsToMany(db.trips, {
 
 // Sync with the database
 db.sequelize.sync(
-	// {force: true}
+	// {alter: true}
 )
 .then(() => {
 	console.log('Database synchronization complete.');

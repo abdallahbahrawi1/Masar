@@ -1,23 +1,45 @@
 <template>
   <div class="container-fluid">
-    <form class="login-form mx-auto">
+    <form class="login-form mx-auto" @submit.prevent="handleSubmit">
       <h4 class="text-center">Login</h4>
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <input type="email" v-model="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
+        <input type="password" v-model="password" class="form-control" id="exampleInputPassword1" required>
         <div id="emailHelp" class="form-text mt-3">Forget password?</div>
-
       </div>
 
+      <div v-if="errors" class="text-danger">Login failed. Please check your email and password.</div>
       <button type="submit" class="btn btn-primary mt-4">Login</button>
-    </form> 
+      <p class="text-center mt-4">Don't have an account? <NuxtLink to="/signup" class="signup-link">Sign up for free</NuxtLink></p> 
+    </form>
   </div>
 </template>
-    
+
+<script setup>
+import { ref } from 'vue';
+import axios from 'axios';
+
+const email = ref('');
+const password = ref('');
+const errors = ref('');
+
+const handleSubmit =  async () => {
+  try {
+    await axios.post("http://localhost:4000/users/signin", {
+      email: email.value,
+      password: password.value
+    });
+    await navigateTo('/')
+  } catch (error) {
+    errors.value = error.response.data;
+  }
+}
+</script>
+
 <style>
 
 form{
@@ -48,8 +70,18 @@ border-radius: 4px 4px 0 0;
 font-size: 2rem !important;
 font-weight: 700;
 }
+
 .form-label {
 font-family: 800 !important;
+}
+
+.signup-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
 }
 
 @media only screen and (max-width: 900px){

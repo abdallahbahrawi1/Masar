@@ -29,28 +29,20 @@ export const serviceLoginUser = async (input) => {
 };
 
 export const serviceCreateUser = async (input) => {
-  const { username, email, password, first_name, last_name, mobile, birth_date } = input;
+  const { first_name, last_name, email, password } = input;
 
   try {
     const existingEmail = await db.users.findOne({ where: { email } });
     if (existingEmail) {
-      throw { code: 409, message: "Email already in Use" };
-    }
-
-    const existingUsername = await db.users.findOne({ where: { username } });
-    if (existingUsername) {
-      throw { code: 409, message: "Username already in Use" };
+      throw { code: 409, message: "You already have an account. Please log in." };
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = await db.users.create({
-      username,
       email,
       password: hashedPassword,
       first_name,
       last_name,
-      mobile,
-      birth_date,
     });
 
     return newUser;
@@ -91,27 +83,6 @@ export const serviceChangePassword = async (input ,sessionUser): Promise<boolean
   }
 };
 
-export const serviceChangeUsername = async (input, sessionUser): Promise<boolean> => {
-  try {
-    const { newUsername } = input;
-    const existingUsername = await db.users.findOne({ where: { username: newUsername } });
-    if (existingUsername) {
-      throw { code: 409, message: "Username already in Use" };
-    }
-    await db.users.update(
-      { username: newUsername },
-      { where: { id: sessionUser.id } }
-    );
-
-    return true;
-  } catch (error: any) {
-    if (error.code) {
-      throw { code: error.code, message: error.message };
-    } else {
-      throw { code: 500, message: "Internal Server Error" };
-    }
-  }
-};
 
 export const serviceGetUserDetails = async (sessionUser) => {
   try {

@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import { sequelize } from './Database/Models/index';
 import session from 'express-session';
 import usersRoute from './Routers/usersRoute';
@@ -20,7 +21,12 @@ app.use(
 );
 myStore.sync();
 
-const port = process.env.PORT || 3000;
+app.use(
+  cors({
+    origin: '*',
+  })
+)
+const port = process.env.PORT || 4000;
 app.use(express.json());
 
 app.use('/users', usersRoute);

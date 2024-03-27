@@ -1,6 +1,6 @@
 <template>
-  <div class="login-view">
-    <LoginForm class="LoginForm"/>
+  <div class="signup-login-view">
+    <LoginForm class="signup-login-form"/>
   </div>
 </template>
 
@@ -9,11 +9,8 @@
 </script>
 
 <style>
-body {
-  overflow-x: hidden;
-}
 
-.login-view {
+.signup-login-view {
   height: 100vh; 
   width: 100vw;
   background-image: url('../public/img/masar.jpg');
@@ -21,7 +18,7 @@ body {
   background-repeat: no-repeat;
 }
 
-.LoginForm {
+.signup-login-form {
   margin: 0;
   position: absolute;
   top: 50%;

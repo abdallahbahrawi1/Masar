@@ -1,5 +1,5 @@
-import { serviceChangePassword, serviceChangeUsername, serviceCreateUser, serviceDeleteUserAccount, serviceGetUserDetails, serviceLoginUser, serviceUpdateUserDetails } from "../Services/userService";
-import { changePasswordSchema, changeUsernameSchema, createUserSchema, loginSchema, updateUserSchema } from "../Validators/userSchema";
+import { serviceChangePassword, serviceCreateUser, serviceDeleteUserAccount, serviceGetUserDetails, serviceLoginUser, serviceUpdateUserDetails } from "../Services/userService";
+import { changePasswordSchema, createUserSchema, loginSchema, updateUserSchema } from "../Validators/userSchema";
 
 export const loginUser = async (req: any, res: any) => {
   try {
@@ -21,6 +21,8 @@ export const loginUser = async (req: any, res: any) => {
 }
 
 export const createUser = async (req: any, res: any) => {
+  console.log(req.body)
+
   try {
     const { error, value } = createUserSchema.validate(req.body);
     if (error) {
@@ -53,20 +55,6 @@ export const changePassword = async (req: any, res: any) => {
   try {
     const result = await serviceChangePassword(value, req.session.user);
     await req.session.destroy();
-    res.status(200).json(result);
-  } catch (error: any) {
-    const statusCode = error.code || 500;
-    res.status(statusCode).json({ error: error.message });
-  }
-};
-
-export const changeUsername = async (req: any, res: any)=> {
-  try {
-    const { error, value } = changeUsernameSchema.validate(req.body);
-    if (error) {
-      return res.status(400).json({ error: error.details[0].message });
-    }
-    const result = await serviceChangeUsername(value, req.session.user);
     res.status(200).json(result);
   } catch (error: any) {
     const statusCode = error.code || 500;
