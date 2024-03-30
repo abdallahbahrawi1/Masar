@@ -1,12 +1,9 @@
 <template>
   <div class="signup-login-view">
-    <LoginForm class="signup-login-form"/>
+    <LoginForm/>
   </div>
 </template>
 
-<script setup>
-
-</script>
 
 <style>
 
@@ -16,14 +13,8 @@
   background-image: url('../public/img/masar.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+  padding: 50px;
 }
 
-.signup-login-form {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 
 </style>

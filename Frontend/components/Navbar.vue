@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<nav class="navbar navbar-expand-sm navbar-light bg-light">
+		<nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light">
 			<div class="container-fluid">
 				<NavbarBrand />
 				<button
@@ -13,13 +13,8 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div :class="{ 'collapse': !isNavbarOpen }" class="navbar-collapse" id="navbarNav">
-					<NavbarLinks :isLargeScreen="isLargeScreen"/>
+					<NavbarLinks/>
 				</div>
-				<ul v-if="isLargeScreen" class="navbar-nav ml-auto">
-						<li class="nav-item">
-							<NuxtLink to="/login" class="nav-link">Log in</NuxtLink>
-						</li>
-				</ul>
 			</div>
 		</nav>
 	</div>
@@ -37,7 +32,7 @@ const toggleNavbar = () => {
 };
 
 const handleResize = () => {
-  isLargeScreen.value = window.innerWidth >= 576; 
+  isLargeScreen.value = window.innerWidth >= 576;
 };
 
 onMounted(() => {

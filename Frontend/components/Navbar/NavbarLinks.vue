@@ -7,16 +7,8 @@
       <NuxtLink to="/about" class="nav-link">About</NuxtLink>
     </li>
 
-    <li v-if="!isLargeScreen" class="nav-item">
+    <li class="nav-item">
       <NuxtLink to="/login" class="nav-link">Log in</NuxtLink>
     </li>
   </ul>
 </template>
-
-
-
-<script setup>
-const props = defineProps({
-  isLargeScreen: Boolean
-});
-</script>
