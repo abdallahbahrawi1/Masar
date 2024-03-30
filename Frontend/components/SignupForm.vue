@@ -22,9 +22,9 @@
           <label for="confirmation_password" class="form-label">confrim Password</label>
           <input type="password" v-model="confrimationPassword" class="form-control" id="confirmation_password" required>
         </div>
-        <div v-if="errors" class="text-danger">{{ errors }}</div>
+
         <button type="submit" class="btn btn-primary mt-4">Sign Up</button>
-        <p class="text-center mt-4">Already have an account? <NuxtLink to="/login" class="login-link">Login</NuxtLink></p> 
+
       </form>
     </div>
 </template>

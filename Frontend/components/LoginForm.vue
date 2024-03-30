@@ -3,18 +3,17 @@
     <form class="login-form mx-auto" @submit.prevent="handleSubmit">
       <h4 class="text-center">Login</h4>
       <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input type="email" v-model="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" v-model="email" class="form-control" id="email" aria-describedby="emailHelp" required>
       </div>
+
       <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" v-model="password" class="form-control" id="exampleInputPassword1" required>
+        <label for="password" class="form-label">Password</label>
+        <input type="password" v-model="password" class="form-control" id="password" required>
         <div id="emailHelp" class="form-text mt-3">Forget password?</div>
       </div>
 
-      <div v-if="errors" class="text-danger">Login failed. Please check your email and password.</div>
       <button type="submit" class="btn btn-primary mt-4">Login</button>
-      <p class="text-center mt-4">Don't have an account? <NuxtLink target="_blank" to="/signup" class="signup-link">Sign up for free</NuxtLink></p>
     </form>
   </div>
 </template>
