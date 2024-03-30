@@ -3,20 +3,24 @@
       <form class="signup-form mx-auto" @submit.prevent="handleSubmit">
         <h4 class="text-center">Sign Up</h4>
         <div class="mb-3">
-            <label for="exampleInputFirstName" class="form-label">First Name</label>
-            <input type="text" v-model="firstName" class="form-control" id="exampleInputFirstName" required>
+            <label for="first_name" class="first_name">First Name</label>
+            <input type="text" v-model="firstName" class="form-control" id="first_name" required>
         </div>
         <div class="mb-3">
-            <label for="exampleInputLastName" class="form-label">Last Name</label>
-            <input type="text" v-model="lastName" class="form-control" id="exampleInputLastName" required>
+            <label for="last_name" class="form-label">Last Name</label>
+            <input type="text" v-model="lastName" class="form-control" id="last_name" required>
         </div>
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email address</label>
-          <input type="email" v-model="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" v-model="email" class="form-control" id="email" aria-describedby="emailHelp" required>
         </div>
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" v-model="password" class="form-control" id="exampleInputPassword1" required>
+          <label for="password" class="form-label">Password</label>
+          <input type="password" v-model="password" class="form-control" id="password" required>
+        </div>
+        <div class="mb-3">
+          <label for="confirmation_password" class="form-label">confrim Password</label>
+          <input type="password" v-model="confrimationPassword" class="form-control" id="confirmation_password" required>
         </div>
         <div v-if="errors" class="text-danger">{{ errors }}</div>
         <button type="submit" class="btn btn-primary mt-4">Sign Up</button>
@@ -34,6 +38,8 @@ const password = ref('');
 const firstName = ref('');
 const lastName = ref('');
 const errors = ref('');
+const confrimationPassword = ref('');
+
 
 const handleSubmit =  async () => {
   try {
@@ -41,7 +47,8 @@ const handleSubmit =  async () => {
       email: email.value,
       password: password.value,
       first_name: firstName.value,
-      last_name: lastName.value
+      last_name: lastName.value,
+      confrimation_password : confrimationPassword.value
     });
     await navigateTo('/')
   } catch (error) {

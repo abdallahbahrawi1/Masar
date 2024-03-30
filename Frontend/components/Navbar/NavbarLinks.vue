@@ -8,7 +8,13 @@
     </li>
 
     <li class="nav-item">
-      <NuxtLink to="/login" class="nav-link" target="_blank">Log in</NuxtLink>
+      <NuxtLink to="/login" class="nav-link" target="_blank">Sign in</NuxtLink>
+    </li>
+
+    <li class="nav-item">
+      <NuxtLink to="/signup" class="nav-link" target="_blank">Sign Up</NuxtLink>
     </li>
   </ul>
 </template>
+<script setup lang="ts">
+</script>

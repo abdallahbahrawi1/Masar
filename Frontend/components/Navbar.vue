@@ -39,5 +39,5 @@ onMounted(() => {
   window.addEventListener('resize', handleResize);
   handleResize();
 });
-</script> 
+</script>
 
