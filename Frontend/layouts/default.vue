@@ -31,7 +31,7 @@ export default {
       const currentRoute = this.$route.path;
 
       // Define paths where Navbar and Footer should be hidden
-      const hiddenPaths = ['/login']; // Add more paths if needed
+      const hiddenPaths = ['/login','/signup']; // Add more paths if needed
 
       // Check if the current route is in the hidden paths
       if (hiddenPaths.includes(currentRoute)) {

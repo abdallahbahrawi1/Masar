@@ -14,7 +14,7 @@
 
       <div v-if="errors" class="text-danger">Login failed. Please check your email and password.</div>
       <button type="submit" class="btn btn-primary mt-4">Login</button>
-      <p class="text-center mt-4">Don't have an account? <NuxtLink to="/signup" class="signup-link">Sign up for free</NuxtLink></p> 
+      <p class="text-center mt-4">Don't have an account? <NuxtLink target="_blank" to="/signup" class="signup-link">Sign up for free</NuxtLink></p>
     </form>
   </div>
 </template>
