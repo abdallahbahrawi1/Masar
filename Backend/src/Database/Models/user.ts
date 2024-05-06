@@ -1,6 +1,9 @@
 module.exports = (sequelize: any, DataTypes: any) => {
 	const User = sequelize.define("User", {
-		
+		googleID: {
+			type: DataTypes.STRING,
+			unique: 'googleID'
+		}, 
 		email: {
 			type: DataTypes.STRING,
 			allowNull: false,
@@ -12,7 +15,6 @@ module.exports = (sequelize: any, DataTypes: any) => {
 		},	
 		password: {
 			type: DataTypes.STRING,
-			allowNull: false,
 			validate: {
 				len: [8, 254]
 			},
@@ -27,6 +29,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
 		},
 		profile_image: {
 			type: DataTypes.STRING,
+			defaultValue: 'img/default.png' 
 		},
 		mobile: {
 			type: DataTypes.STRING,

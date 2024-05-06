@@ -1,36 +1,34 @@
-import { serviceChangePassword, serviceCreateUser, serviceDeleteUserAccount, serviceGetUserDetails, serviceLoginUser, serviceUpdateUserDetails } from "../Services/userService";
+import { serviceChangePassword, serviceCreateUser, serviceDeleteUserAccount, serviceGetUserDetails, serviceGetUsersDetails, serviceLoginUser, serviceUpdateUserDetails } from "../Services/userService";
 import { changePasswordSchema, createUserSchema, loginSchema, updateUserSchema } from "../Validators/userSchema";
 
 export const loginUser = async (req: any, res: any) => {
   try {
+    
     const { error, value } = loginSchema.validate(req.body);
     if (error) {
       return res.status(400).json({ error: error.details[0].message });
     }
     const user = await serviceLoginUser(value);
 
-    req.session.user = {
-			id: user.id,
-			email: user.email,
-		};
-    res.status(200).json(req.session);
+    req.session.user = user
+    res.status(200).json({session: req.session});
+
   } catch (error: any) {
     const statusCode = error.code || 500;
+    console.log(error.message)
     res.status(statusCode).json({ error: error.message });
   }
 }
 
-export const createUser = async (req: any, res: any) => {
-  console.log(req.body)
-
+export const createUser = async (req: any, res: any) => { 
   try {
     const { error, value } = createUserSchema.validate(req.body);
     if (error) {
       return res.status(400).json({ error: error.details[0].message });
     }
-    const newUser = await serviceCreateUser(value);
-		req.session.userId = newUser.id;
-    res.status(201).json(newUser);
+    console.log(value)
+    const user = await serviceCreateUser(value);
+    res.status(201).json(user);
   } catch (error: any) {
     const statusCode = error.code || 500;
     res.status(statusCode).json({ error: error.message });
@@ -73,6 +71,7 @@ export const getUserDetails = async (req: any, res: any) => {
 };
 
 export const updateUserDetails = async (req: Request, res: Response) => {
+  console.log(req.params.id)
   const { error, value } = updateUserSchema.validate(req.body);
   if (error) {
     return res.status(400).json({ error: error.details[0].message });
@@ -91,6 +90,17 @@ export const deleteUserAccount = async (req: Request, res: Response) => {
     const result = await serviceDeleteUserAccount(req.session.user);
     await req.session.destroy();
     res.status(200).json(result);
+  } catch (error: any) {
+    const statusCode = error.code || 500;
+    res.status(statusCode).json({ error: error.message });
+  }
+};
+
+export const getUsersDetails = async (req: any, res: any) => {
+  try {
+    const result = await serviceGetUsersDetails();
+    res.status(200).json(result);
+
   } catch (error: any) {
     const statusCode = error.code || 500;
     res.status(statusCode).json({ error: error.message });

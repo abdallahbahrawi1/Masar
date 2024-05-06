@@ -10,13 +10,24 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@morev/vue-transitions": "^3.0.2",
+    "@nuxtjs/auth": "^1.0.2",
+    "@nuxtjs/axios": "^5.13.6",
+    "@vueuse/core": "^10.9.0",
+    "@vueuse/nuxt": "^10.9.0",
     "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
+    "date-fns": "^2.30.0",
     "nuxt": "^3.11.1",
+    "nuxt-headlessui": "^1.1.5",
+    "v-calendar": "^3.1.2",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
-    "nuxt-icon": "^0.6.10"
+    "@nuxtjs/tailwindcss": "^6.11.4",
+    "nuxt-icon": "^0.6.10",
+    "tailwind-scrollbar": "^3.1.0",
+    "tailwindcss": "^3.4.3"
   }
 }

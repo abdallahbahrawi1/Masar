@@ -15,14 +15,12 @@ export const createUserSchema = Joi.object({
   last_name: Joi.string().required(),
   email: Joi.string().email().min(5).max(254).required(),
   password: Joi.string().required(),
-  // mobile: Joi.string()
-  //   .pattern(/^(\+\d{1,3}[- ]?)?\d{10}$/)
-  //   .message("Please provide a valid mobile number")
-  //   .required(),
-  // birth_date: Joi.string()
-  //   .isoDate() 
-  //   .message("Please provide a valid birth date in the format YYYY-MM-DD")
-  //   .required(),
+  mobile: Joi.string()
+    .pattern(/^(\+\d{1,3}[- ]?)?\d{10}$/)
+    .message("Please provide a valid mobile number"),
+  birth_date: Joi.string()
+    .isoDate() 
+    .message("Please provide a valid birth date in the format YYYY-MM-DD"),
 });
 
 export const changePasswordSchema = Joi.object({
@@ -33,6 +31,7 @@ export const changePasswordSchema = Joi.object({
 export const updateUserSchema = Joi.object({
   first_name: Joi.string(),
   last_name: Joi.string(),
+  email: Joi.string().email().min(5).max(254),
   mobile: Joi.string()
     .pattern(/^(\+\d{1,3}[- ]?)?\d{10}$/)
     .message("Please provide a valid mobile number"),

@@ -69,6 +69,9 @@
       "assets": [
         "../assets"
       ],
+      "assets/*": [
+        "../assets/*"
+      ],
       "public": [
         "../public"
       ],
@@ -77,12 +80,22 @@
       ],
       "#icon-collections": [
         "./icon-collections"
+      ],
+      "#tailwind-config": [
+        "./tailwind.config"
+      ],
+      "#tailwind-config/*": [
+        "./tailwind.config/*"
       ]
     }
   },
   "include": [
     "./types/nitro-nuxt.d.ts",
     "../node_modules/nuxt-icon/runtime/server",
+    "../node_modules/@nuxtjs/tailwindcss/runtime/server",
+    "../node_modules/@vueuse/nuxt/runtime/server",
+    "../node_modules/nuxt-headlessui/runtime/server",
+    "../node_modules/@morev/vue-transitions/nuxt/runtime/server",
     "../node_modules/@nuxt/devtools/runtime/server",
     "../node_modules/@nuxt/telemetry/runtime/server",
     "./types/nitro.d.ts",
